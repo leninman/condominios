@@ -2,17 +2,24 @@ package com.resimanager.backoffice.controller;
 
 import com.resimanager.backoffice.dto.OwnerRequestDto;
 import com.resimanager.backoffice.dto.OwnerResponseDto;
+import com.resimanager.backoffice.exception.ServiceException;
 import com.resimanager.backoffice.repository.Owner;
 import com.resimanager.backoffice.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,25 +34,18 @@ public class OwnerController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<OwnerResponseDto>> getAllOwners(@RequestParam(required = false, defaultValue = "0") int page, @RequestParam(required = false, defaultValue = "0") int size) {
-        if (page <= 0 && size <= 0) {
-            List<OwnerResponseDto> owners = ownerService.getAllOwners();
-            Pageable pageable = Pageable.unpaged();
-            Page<OwnerResponseDto> pageOwners = new PageImpl<>(owners, pageable, owners.size());
-            return new ResponseEntity<>(pageOwners, HttpStatus.OK);
-        }
-
-        if(page > 0 && size <= 0) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        if(page <= 0) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Page<OwnerResponseDto>> getAllOwners(@RequestParam int page, @RequestParam int size) {
+        if (!isValidPagination(page, size)) {
+            throw new ServiceException("Invalid pagination parameters", HttpStatus.BAD_REQUEST.value());
         }
 
         Pageable pageable = Pageable.ofSize(size).withPage(page);
         Page<OwnerResponseDto> owners = ownerService.getAllOwners(pageable);
         return new ResponseEntity<>(owners, HttpStatus.OK);
+    }
+
+    private static boolean isValidPagination(int page, int size) {
+        return page >= 0 && size > 0;
     }
 
     @GetMapping("/{id}")

@@ -27,12 +27,6 @@ public class OwnerService {
         return new PageImpl<>(list.getContent(), pageable, countConstruction);
     }
 
-    public List<OwnerResponseDto> getAllOwners() {
-        return ownerRepository.findAll().stream()
-                .map(OwnerMapper.MAPPER::mapToDto)
-                .collect(Collectors.toList());
-    }
-
     public OwnerResponseDto getOwnerById(Long ownerId) {
         return ownerRepository.findById(ownerId)
                 .map(OwnerMapper.MAPPER::mapToDto)
