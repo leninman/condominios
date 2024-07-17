@@ -1,4 +1,4 @@
-package com.resimanager.backoffice.repository;
+package com.resimanager.backoffice.persistance.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -2,7 +2,7 @@ package com.resimanager.backoffice.service;
 
 import lombok.AllArgsConstructor;
 import com.resimanager.backoffice.dto.AuthDto;
-import com.resimanager.backoffice.repository.UserRepository;
+import com.resimanager.backoffice.persistance.repository.UserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Base64;

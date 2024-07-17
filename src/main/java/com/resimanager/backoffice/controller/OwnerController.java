@@ -3,7 +3,7 @@ package com.resimanager.backoffice.controller;
 import com.resimanager.backoffice.dto.OwnerRequestDto;
 import com.resimanager.backoffice.dto.OwnerResponseDto;
 import com.resimanager.backoffice.exception.ServiceException;
-import com.resimanager.backoffice.repository.Owner;
+import com.resimanager.backoffice.persistance.entity.Owner;
 import com.resimanager.backoffice.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

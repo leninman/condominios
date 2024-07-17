@@ -2,7 +2,7 @@ package com.resimanager.backoffice.service.mapper;
 
 import com.resimanager.backoffice.dto.OwnerRequestDto;
 import com.resimanager.backoffice.dto.OwnerResponseDto;
-import com.resimanager.backoffice.repository.Owner;
+import com.resimanager.backoffice.persistance.entity.Owner;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

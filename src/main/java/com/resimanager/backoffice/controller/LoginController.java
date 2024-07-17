@@ -34,7 +34,7 @@ public class LoginController {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestJson.getUsername(), loginRequestJson.getPassword()));
         if (authentication.isAuthenticated()) {
             var token = jwtService.generateToken(authentication);
-            var responseMapped = objectMapper.readTree("{\"token\":\"" + token + "\"}");
+            var responseMapped = objectMapper.readTree("{token:" + token + "}");
             return ResponseEntity.ok().body(responseMapped);
         } else {
             throw new UsernameNotFoundException("invalid user request");

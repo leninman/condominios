@@ -2,8 +2,8 @@ package com.resimanager.backoffice.service;
 
 import com.resimanager.backoffice.dto.OwnerRequestDto;
 import com.resimanager.backoffice.dto.OwnerResponseDto;
-import com.resimanager.backoffice.repository.Owner;
-import com.resimanager.backoffice.repository.OwnerRepository;
+import com.resimanager.backoffice.persistance.entity.Owner;
+import com.resimanager.backoffice.persistance.repository.OwnerRepository;
 import com.resimanager.backoffice.service.mapper.OwnerMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -11,9 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
