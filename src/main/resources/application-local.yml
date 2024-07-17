@@ -7,7 +7,7 @@ spring:
     location: classpath:banner.txt
   datasource:
     driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:demo_db;MODE=Mysql
+    url: jdbc:h2:mem:demo_db;MODE=PostgreSQL
     username: root
     password: 12345
     initialization-mode: always
