@@ -1,14 +1,6 @@
 package com.resimanager.backoffice.persistance.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -17,6 +9,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,11 +19,11 @@ public class Modulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ModID", nullable = false)
-    private Integer id;
+    private Integer modId;
 
     @Size(max = 80)
     @NotNull
-    @Column(name = "ModNombre", nullable = false, length = 80)
+    @Column(name = "mod_nombre", nullable = false, length = 80)
     private String modNombre;
 
     @Size(max = 120)
@@ -71,5 +64,8 @@ public class Modulo {
     @NotNull
     @Column(name = "ModEstMod", nullable = false, length = 40)
     private String modEstMod;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mItModId")
+    private List<MenuItem> menuItems;
 
 }

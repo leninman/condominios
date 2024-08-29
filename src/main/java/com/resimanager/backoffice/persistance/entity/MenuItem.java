@@ -19,7 +19,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "MenuItem")
+@Table(name = "menu_item")
 public class MenuItem {
     @EmbeddedId
     private MenuItemId id;
@@ -84,5 +84,9 @@ public class MenuItem {
     @NotNull
     @Column(name = "MItEstMod", nullable = false, length = 40)
     private String mItEstMod;
+
+
+    @ManyToOne
+    private Modulo mItModId;
 
 }

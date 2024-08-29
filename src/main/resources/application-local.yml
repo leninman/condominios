@@ -3,25 +3,30 @@ spring:
     default-property-inclusion: NON_NULL
   banner:
     location: classpath:banner.txt
+  #datasource:
+   # driverClassName: org.h2.Driver
+   # url: jdbc:h2:mem:demo_db;MODE=PostgreSQL
+   # username: root
+   # password: 12345
   datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:demo_db;MODE=PostgreSQL
-    username: root
-    password: 12345
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/condominio
+    username: postgres
+    password: 1234
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     generate-ddl: false
     open-in-view: false
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
-  h2:
-    console:
-      enabled: true
-      path: /console
-  flyway:
-    enabled: true
-    locations: classpath:/migrations
+  #h2:
+    #console:
+    #  enabled: true
+    #  path: /console
+  #flyway:
+   # enabled: true
+   # locations: classpath:/migrations
   rabbitmq:
     host: localhost
     port: 9091

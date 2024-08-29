@@ -54,7 +54,7 @@ public class SecurityConfig {
                     } catch (Exception e) {
                         throw new RuntimeException("Failed to configure MVC request matchers", e);
                     }
-                    auth.anyRequest().authenticated();
+                    auth.anyRequest().permitAll();
                 })
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
