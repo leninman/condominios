@@ -16,6 +16,10 @@ public class MnuDto {
     private String nombre;
     private String tipo;
     private String estado;
+    private Integer idAccion;
+    private String accion;
+    private Integer idOpcion;
+    private String opcion;
     private Integer idModulo;
     private String modulo;
     private String controlador;

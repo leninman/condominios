@@ -1,12 +1,6 @@
 package com.resimanager.backoffice.persistance.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -86,7 +80,22 @@ public class MenuItem {
     private String mItEstMod;
 
 
-    @ManyToOne
-    private Modulo mItModId;
+    @ManyToOne()
+    @JoinColumn(name = "mit_modid",insertable=false, updatable=false)
+    private Modulo modulo;
+
+
+    @ManyToOne()
+    @JoinColumn(name = "mit_accionid" )
+    private Accion accion;
+
+    @ManyToOne()
+    @JoinColumns({
+            @JoinColumn(name = "mit_opcionid",referencedColumnName = "opcid"),
+            @JoinColumn(name="mit_modid",referencedColumnName = "opc_modid")
+    })
+    private Opcion opcion;
+
+
 
 }

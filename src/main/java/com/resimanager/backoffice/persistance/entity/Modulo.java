@@ -27,45 +27,45 @@ public class Modulo {
     private String modNombre;
 
     @Size(max = 120)
-    @Column(name = "ModDescrip", length = 120)
+    @Column(name = "mod_descrip", length = 120)
     private String modDescrip;
 
     @Size(max = 1)
     @NotNull
-    @Column(name = "ModSts", nullable = false, length = 1)
+    @Column(name = "mod_sts", nullable = false, length = 1)
     private String modSts;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
-    @JoinColumn(name = "Mod_UsrCrea", nullable = false)
+    @JoinColumn(name = "mod_usr_crea", nullable = false)
     private Persona modUsrcrea;
 
     @NotNull
-    @Column(name = "ModFchHorCrea", nullable = false)
+    @Column(name = "mod_fch_hor_crea", nullable = false)
     private OffsetDateTime modFchHorCrea;
 
     @Size(max = 40)
     @NotNull
-    @Column(name = "ModEstCrea", nullable = false, length = 40)
+    @Column(name = "mod_est_crea", nullable = false, length = 40)
     private String modEstCrea;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
-    @JoinColumn(name = "Mod_UsrMod", nullable = false)
+    @JoinColumn(name = "mod_usr_mod", nullable = false)
     private Persona modUsrmod;
 
     @NotNull
-    @Column(name = "ModFchHorMod", nullable = false)
+    @Column(name = "mod_fch_hor_mod", nullable = false)
     private OffsetDateTime modFchHorMod;
 
     @Size(max = 40)
     @NotNull
-    @Column(name = "ModEstMod", nullable = false, length = 40)
+    @Column(name = "mod_est_mod", nullable = false, length = 40)
     private String modEstMod;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mItModId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modulo")
     private List<MenuItem> menuItems;
 
 }

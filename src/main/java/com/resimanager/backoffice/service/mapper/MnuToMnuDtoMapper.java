@@ -17,7 +17,7 @@ public class MnuToMnuDtoMapper implements Function<MenuItem, MnuDto> {
         mnuDto.setEstado(menuItem.getMItSts());
         mnuDto.setControlador(menuItem.getMItControlador());
         mnuDto.setMetodo(menuItem.getMItMetodo());
-        if (menuItem.getMItModId() == null) {
+        if (menuItem.getModulo() == null) {
             mnuDto.setModulo(menuItem.getMItNombre());
             if (menuItem.getMItNombre().equals("Super Admin")) {
                 mnuDto.setIdModulo(1);
@@ -35,8 +35,12 @@ public class MnuToMnuDtoMapper implements Function<MenuItem, MnuDto> {
 
             }
         } else {
-            mnuDto.setIdModulo(menuItem.getMItModId().getModId());
-            mnuDto.setModulo(menuItem.getMItModId().getModNombre());
+            mnuDto.setIdModulo(menuItem.getModulo().getModId());
+            mnuDto.setModulo(menuItem.getModulo().getModNombre());
+            mnuDto.setIdAccion(menuItem.getAccion().getId());
+            mnuDto.setAccion(menuItem.getAccion().getAccNombre());
+            mnuDto.setIdOpcion(menuItem.getOpcion().getId().getOpcID());
+            mnuDto.setOpcion(menuItem.getOpcion().getOpcNombre());
         }
 
 
