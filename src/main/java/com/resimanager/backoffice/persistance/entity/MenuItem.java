@@ -26,63 +26,63 @@ public class MenuItem {
 
     @Size(max = 80)
     @NotNull
-    @Column(name = "MItNombre", nullable = false, length = 80)
+    @Column(name = "mit_nombre", nullable = false, length = 80)
     private String mItNombre;
 
     @Size(max = 1)
     @NotNull
-    @Column(name = "MItTipo", nullable = false, length = 1)
+    @Column(name = "mit_tipo", nullable = false, length = 1)
     private String mItTipo;
 
     @NotNull
-    @Column(name = "MItItemPadre", nullable = false)
+    @Column(name = "mit_item_padre", nullable = false)
     private Integer mItItemPadre;
 
     @NotNull
-    @Column(name = "MItOrden", nullable = false)
+    @Column(name = "mit_orden", nullable = false)
     private Integer mItOrden;
 
     @Size(max = 20)
-    @Column(name = "MItControlador", length = 20)
+    @Column(name = "mit_controlador", length = 20)
     private String mItControlador;
 
     @Size(max = 20)
-    @Column(name = "MItMetodo", length = 20)
+    @Column(name = "mit_metodo", length = 20)
     private String mItMetodo;
 
     @Size(max = 1)
     @NotNull
-    @Column(name = "MItSts", nullable = false, length = 1)
+    @Column(name = "mit_sts", nullable = false, length = 1)
     private String mItSts;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
-    @JoinColumn(name = "MIt_UsrCrea", nullable = false)
+    @JoinColumn(name = "mit_usr_crea", nullable = false)
     private Persona mitUsrcrea;
 
     @NotNull
-    @Column(name = "MItFchHorCrea", nullable = false)
+    @Column(name = "mit_fch_hor_crea", nullable = false)
     private OffsetDateTime mItFchHorCrea;
 
     @Size(max = 40)
     @NotNull
-    @Column(name = "MItEstCrea", nullable = false, length = 40)
+    @Column(name = "mit_est_crea", nullable = false, length = 40)
     private String mItEstCrea;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
-    @JoinColumn(name = "MIt_UsrMod", nullable = false)
+    @JoinColumn(name = "mit_usr_mod", nullable = false)
     private Persona mitUsrmod;
 
     @NotNull
-    @Column(name = "MItFchHorMod", nullable = false)
+    @Column(name = "mit_fch_hor_mod", nullable = false)
     private OffsetDateTime mItFchHorMod;
 
     @Size(max = 40)
     @NotNull
-    @Column(name = "MItEstMod", nullable = false, length = 40)
+    @Column(name = "mit_est_mod", nullable = false, length = 40)
     private String mItEstMod;
 
 
