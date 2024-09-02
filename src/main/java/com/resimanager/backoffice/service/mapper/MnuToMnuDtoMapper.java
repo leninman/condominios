@@ -11,9 +11,20 @@ public class MnuToMnuDtoMapper implements Function<MenuItem, MnuDto> {
     @Override
     public MnuDto apply(MenuItem menuItem) {
         MnuDto mnuDto = new MnuDto();
-        mnuDto.setId(menuItem.getId().getMItID());
+        mnuDto.setMenuId(menuItem.getId().getMitMenuid());
+        mnuDto.setItemId(menuItem.getId().getMItID());
         mnuDto.setNombre(menuItem.getMItNombre());
         mnuDto.setTipo(menuItem.getMItTipo());
+        mnuDto.setIdPadre(menuItem.getMItItemPadre());
+        mnuDto.setOrden(menuItem.getMItOrden());
+        mnuDto.setIdUsrCrea(menuItem.getMitUsrCrea().getId());
+        mnuDto.setUsrCrea(menuItem.getMitUsrCrea().getPerUsuario());
+        mnuDto.setFechaHoraCrea(menuItem.getMItFchHorCrea());
+        mnuDto.setEstCrea(menuItem.getMItEstCrea());
+        mnuDto.setIdUsrModifica(menuItem.getMitUsrmod().getId());
+        mnuDto.setUsrModifica(menuItem.getMitUsrmod().getPerUsuario());
+        mnuDto.setFechaHoraModifica(menuItem.getMItFchHorMod());
+        mnuDto.setEstModifica(menuItem.getMItEstMod());
         mnuDto.setEstado(menuItem.getMItSts());
         mnuDto.setControlador(menuItem.getMItControlador());
         mnuDto.setMetodo(menuItem.getMItMetodo());

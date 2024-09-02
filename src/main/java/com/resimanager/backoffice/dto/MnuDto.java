@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
+import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,9 +15,20 @@ import java.util.List;
 @Setter
 public class MnuDto {
 
-    private Integer id;
+    private Integer menuId;
+    private Integer itemId;
     private String nombre;
     private String tipo;
+    private Integer idPadre;
+    private Integer orden;
+    private Integer idUsrCrea;
+    private String usrCrea;
+    private OffsetDateTime fechaHoraCrea;
+    private String estCrea;
+    private Integer idUsrModifica;
+    private String usrModifica;
+    private OffsetDateTime fechaHoraModifica;
+    private String estModifica;
     private String estado;
     private Integer idAccion;
     private String accion;

@@ -52,8 +52,8 @@ public class MenuItem {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
-    @JoinColumn(name = "mit_usr_crea", nullable = false)
-    private Persona mitUsrcrea;
+    @JoinColumn(name = "mit_usr_crea")
+    private Persona mitUsrCrea;
 
     @NotNull
     @Column(name = "mit_fch_hor_crea", nullable = false)
@@ -65,7 +65,7 @@ public class MenuItem {
     private String mItEstCrea;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
     @JoinColumn(name = "mit_usr_mod", nullable = false)
     private Persona mitUsrmod;
@@ -79,20 +79,24 @@ public class MenuItem {
     @Column(name = "mit_est_mod", nullable = false, length = 40)
     private String mItEstMod;
 
-
-    @ManyToOne()
-    @JoinColumn(name = "mit_modid",insertable=false, updatable=false)
+    @NotNull
+    @ManyToOne(optional = false)
+    @OnDelete(action = OnDeleteAction.RESTRICT)
+    @JoinColumn(name = "mit_modid",insertable=false, updatable=false, nullable = false)
     private Modulo modulo;
 
-
-    @ManyToOne()
-    @JoinColumn(name = "mit_accionid" )
+    @NotNull
+    @ManyToOne(optional = false)
+    @OnDelete(action = OnDeleteAction.RESTRICT)
+    @JoinColumn(name = "mit_accionid",nullable = false)
     private Accion accion;
 
-    @ManyToOne()
+    @NotNull
+    @ManyToOne(optional = false)
+    @OnDelete(action = OnDeleteAction.RESTRICT)
     @JoinColumns({
-            @JoinColumn(name = "mit_opcionid",referencedColumnName = "opcid"),
-            @JoinColumn(name="mit_modid",referencedColumnName = "opc_modid")
+            @JoinColumn(name = "mit_opcionid",referencedColumnName = "opcid",nullable = false),
+            @JoinColumn(name="mit_modid",referencedColumnName = "opc_modid",nullable = false)
     })
     private Opcion opcion;
 

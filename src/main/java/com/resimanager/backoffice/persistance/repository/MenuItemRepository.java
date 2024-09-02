@@ -11,11 +11,15 @@ import java.util.List;
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItem, MenuItemId> {
     @Query("Select u from MenuItem u " +
-            "where u.mItTipo='A' ")
+            "where u.mItTipo='A' " +
+            "order by u.id.mItID "
+    )
     List<MenuItem> findMenus();
 
     @Query("Select u from MenuItem u " +
-            "where u.mItItemPadre=?1 ")
+            "where u.mItItemPadre=?1 " +
+            "order by u.id.mItID "
+    )
     List<MenuItem> findSubMenus(Integer menuItemPadre);
 
 
